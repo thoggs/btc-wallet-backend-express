@@ -9,13 +9,16 @@ import {GetUserById} from "../../../application/usecases/user/GetUserById";
 import {UpdateUser} from "../../../application/usecases/user/UpdateUser";
 import {DeleteUser} from "../../../application/usecases/user/DeleteUser";
 
-const userController = {
-    index: asyncHandler(async (req: Request, res: Response) => {
+export class UserController {
+    private readonly userRepository: SequelizeUserRepository;
+
+    constructor() {
+        this.userRepository = new SequelizeUserRepository();
+    }
+
+    index = asyncHandler(async (req: Request, res: Response) => {
         const pagination = usePagination(req, ["firstName", "lastName", "email"]);
-
-        const userRepository = new SequelizeUserRepository();
-        const listUsers = new ListUsers(userRepository);
-
+        const listUsers = new ListUsers(this.userRepository);
         const result = await listUsers.execute(pagination);
 
         res.status(StatusCodes.OK).send({
@@ -26,43 +29,30 @@ const userController = {
                 message: [],
             },
         });
-    }),
+    });
 
-    create: asyncHandler(async (req: Request, res: Response) => {
-        const userRepository = new SequelizeUserRepository();
-        const createUser = new CreateUser(userRepository);
-
+    create = asyncHandler(async (req: Request, res: Response) => {
+        const createUser = new CreateUser(this.userRepository);
         const user = await createUser.execute(req.body);
-
         res.status(StatusCodes.CREATED).send(user);
-    }),
+    });
 
-    show: asyncHandler(async (req: Request, res: Response) => {
-        const userRepository = new SequelizeUserRepository();
-        const getUserById = new GetUserById(userRepository);
-
+    show = asyncHandler(async (req: Request, res: Response) => {
+        const getUserById = new GetUserById(this.userRepository);
         const user = await getUserById.execute(req.params.id);
-
         res.status(StatusCodes.OK).json(user);
-    }),
+    });
 
-    update: asyncHandler(async (req: Request, res: Response) => {
-        const userRepository = new SequelizeUserRepository();
-        const updateUser = new UpdateUser(userRepository);
-
+    update = asyncHandler(async (req: Request, res: Response) => {
+        const updateUser = new UpdateUser(this.userRepository);
         const updatedUser = await updateUser.execute(req.params.id, req.body);
-
         res.status(StatusCodes.OK).json(updatedUser);
-    }),
+    });
 
-    destroy: asyncHandler(async (req: Request, res: Response) => {
-        const userRepository = new SequelizeUserRepository();
-        const deleteUser = new DeleteUser(userRepository);
-
+    destroy = asyncHandler(async (req: Request, res: Response) => {
+        const deleteUser = new DeleteUser(this.userRepository);
         await deleteUser.execute(req.params.id);
-
         res.status(StatusCodes.NO_CONTENT).send();
-    }),
-};
+    });
+}
 
-export default userController;

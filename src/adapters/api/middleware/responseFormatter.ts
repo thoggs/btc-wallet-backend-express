@@ -1,5 +1,5 @@
 import {Request, Response, NextFunction} from 'express';
-import {ResponseDTO} from "../../../shared/dto/responseDTO";
+import {ResponseDTO} from "../../../shared/types/responseDTO";
 
 const responseFormatter = (_req: Request, res: Response, next: NextFunction) => {
     const oldJson = res.json.bind(res);

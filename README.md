@@ -83,7 +83,7 @@ git clone https://github.com/thoggs/btc-wallet-backend-express.git && cd btc-wal
 docker-compose up -d
 ```
 
-### 2. Execute as Migrations e Seeders:
+### 3. Execute as Migrations e Seeders:
 
 Dentro da pasta do projeto, execute o comando abaixo para criar as tabelas no banco de dados e popular.
 
@@ -91,13 +91,13 @@ Dentro da pasta do projeto, execute o comando abaixo para criar as tabelas no ba
 yarn && npx sequelize-cli db:seed:all
 ```
 
-### 3. Acesse o Projeto:
+### 4. Servidor
 
-> O projeto estará disponível em http://localhost:8083/api/{endpoint}
+> O projeto estará disponível em: http://localhost:8083/api/{endpoint}
 
-### 4. Swagger Doc
+### 5. Swagger
 
-> http://localhost:3000/api-docs
+> Acesse a documentação Swagger em: http://localhost:3000/api-docs
 
 ## Configuração para Desenvolvimento
 
@@ -138,7 +138,7 @@ JWT_AUDIENCE=jwt_audience
 JWT_EXPIRES_IN=jwt_tempo_de_expiracao
 ```
 
-### Passo 5: Rodar o Projeto
+### Passo 4: Rodar o Projeto
 
 Para rodar o projeto em modo de desenvolvimento:
 

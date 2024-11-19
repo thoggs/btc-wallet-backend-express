@@ -5,26 +5,28 @@ import {SequelizeUserRepository} from "../../persistence/repositories/SequelizeU
 import {SignupUser} from "../../../application/usecases/auth/SignupUser";
 import {SigninUser} from "../../../application/usecases/auth/SigninUser";
 
-const authController = {
-    signup: asyncHandler(async (req: Request, res: Response) => {
-        const userRepository = new SequelizeUserRepository();
-        const signupUser = new SignupUser(userRepository);
+export class AuthController {
+    private readonly userRepository: SequelizeUserRepository;
+
+    constructor() {
+        this.userRepository = new SequelizeUserRepository();
+    }
+
+    signup = asyncHandler(async (req: Request, res: Response) => {
+        const signupUser = new SignupUser(this.userRepository);
 
         const result = await signupUser.execute(req.body);
 
         res.status(StatusCodes.CREATED).json(result);
-    }),
+    });
 
-    signin: asyncHandler(async (req: Request, res: Response) => {
+    signin = asyncHandler(async (req: Request, res: Response) => {
         const {email, password} = req.body;
 
-        const userRepository = new SequelizeUserRepository();
-        const signinUser = new SigninUser(userRepository);
+        const signinUser = new SigninUser(this.userRepository);
 
         const result = await signinUser.execute(email, password);
 
         res.status(StatusCodes.OK).json(result);
-    }),
-};
-
-export default authController;
+    });
+}

@@ -1,4 +1,4 @@
-import { ErrorResponseDto } from "../dto/responseDTO";
+import { ErrorResponseDto } from "../types/responseDTO";
 import { ErrorCode } from "../enums/errorCodes";
 import { ValidationErrorItem } from 'sequelize';
 

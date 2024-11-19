@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction} from 'express';
 import {AppError} from '../../../shared/errors/AppError';
-import {ResponseDTO, ErrorResponseDto} from "../../../shared/dto/responseDTO";
+import {ResponseDTO, ErrorResponseDto} from "../../../shared/types/responseDTO";
 import {CustomValidationError} from "../../../shared/errors/CustomValidationError";
 
 const errorHandlerMiddleware = (err: any, _req: Request, res: Response, _next: NextFunction) => {

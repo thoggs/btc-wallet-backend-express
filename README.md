@@ -71,7 +71,7 @@ corepack enable && corepack prepare yarn@stable --activate
 
 Subir o projeto com Docker:
 
-### 1. Clone o repositório e entre na pasta do projeto:
+### 1. Clone o repositório e entre na pasta do projeto
 
 ```bash
 git clone https://github.com/thoggs/btc-wallet-backend-express.git && cd btc-wallet-backend-express
@@ -83,7 +83,7 @@ git clone https://github.com/thoggs/btc-wallet-backend-express.git && cd btc-wal
 docker-compose up -d
 ```
 
-### 3. Execute as Migrations e Seeders:
+### 3. Execute as Migrations e Seeders
 
 Dentro da pasta do projeto, execute o comando abaixo para criar as tabelas no banco de dados e popular.
 
@@ -97,17 +97,17 @@ yarn && npx sequelize-cli db:seed:all
 
 ### 5. Swagger
 
-> Acesse a documentação Swagger em: http://localhost:3000/api-docs
+> Acesse a documentação Swagger em: http://localhost:8083/api-docs
 
 ## Configuração para Desenvolvimento
 
-### Passo 1: Clonar o Repositório
+### 1. Clonar o Repositório
 
 ```bash
 git clone https://github.com/thoggs/btc-wallet-backend-express.git && cd btc-wallet-backend-express
 ```
 
-### Passo 2: Instalar Dependências
+### 2. Instalar Dependências
 
 ```bash
 npm install
@@ -115,7 +115,7 @@ npm install
 yarn install
 ```
 
-### Passo 3: Configurar Variáveis de Ambiente
+### 3. Configurar Variáveis de Ambiente
 
 Crie ou edite o arquivo `.env` na raiz do projeto e adicione suas configurações do banco de dados:
 
@@ -138,7 +138,7 @@ JWT_AUDIENCE=jwt_audience
 JWT_EXPIRES_IN=jwt_tempo_de_expiracao
 ```
 
-### Passo 4: Rodar o Projeto
+### 4. Rodar o Projeto
 
 Para rodar o projeto em modo de desenvolvimento:
 
@@ -148,12 +148,27 @@ yarn dev
 npm run dev
 ```
 
-Para rodar o projeto em modo de produção:
+### Servidor
+
+> O projeto estará disponível em: http://localhost:3000/api/{endpoint}
+
+### Swagger
+
+> Acesse a documentação Swagger em: http://localhost:3000/api-docs
+
+## Para rodar o projeto em modo de produção:
+
+### 1. Compile o projeto
 
 ```bash
 npm run build
 # ou
 yarn build
+```
+
+### 2. Suba o servidor com o Node
+
+```bash
 node dist/index.js
 ```
 

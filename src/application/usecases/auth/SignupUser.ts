@@ -22,7 +22,7 @@ export class SignupUser {
 
         const accessToken = generateAccessToken(user);
 
-        const {password, ...userWithoutPassword} = user;
+        const {...userWithoutPassword} = user;
 
         return {
             user: userWithoutPassword as Omit<User, "password">,

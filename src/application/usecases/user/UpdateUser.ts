@@ -3,12 +3,13 @@ import {User} from "../../../domain/entities/User";
 import bcrypt from "bcryptjs";
 import {NotFoundError} from "../../../shared/errors/NotFoundError";
 import {UpdateError} from "../../../shared/errors/UpdateError";
+import {UserResponseDTO} from "../../../shared/dto/UserResponseDTO";
 
 export class UpdateUser {
     constructor(private userRepository: UserRepository) {
     }
 
-    async execute(id: string, data: Partial<User>): Promise<User> {
+    async execute(id: string, data: Partial<User>): Promise<UserResponseDTO> {
         const user = await this.userRepository.findById(id);
         if (!user) {
             throw new NotFoundError(`User with ID not found`);

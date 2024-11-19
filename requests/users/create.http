@@ -1,0 +1,12 @@
+### Create User Request
+
+POST {{baseUrl}}/api/users
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "firstName": "Thiago",
+  "lastName": "Rodrigues",
+  "email": "new.user5@example.com",
+  "password": "NewPassword123!"
+}

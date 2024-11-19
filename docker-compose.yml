@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: btc-wallet-db
+    environment:
+      POSTGRES_PASSWORD: codigo1234
+      POSTGRES_DB: btc_wallet_core
+      POSTGRES_USER: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_storage:/var/lib/postgresql/data
+    networks:
+      - btc-wallet-network
+    restart: unless-stopped
+
+  express:
+    container_name: btc-wallet-backend
+    build: .
+    environment:
+      NODE_ENV: production
+      DB_NAME: btc_wallet_core
+      DB_USER: admin
+      DB_PASS: codigo1234
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DIALECT: postgres
+      JWT_SECRET: default_jwt_secret
+      JWT_ISSUER: default_issuer
+      JWT_AUDIENCE: default_audience
+      JWT_EXPIRES_IN: 2592000s
+    ports:
+      - "8083:80"
+    networks:
+      - btc-wallet-network
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+volumes:
+  postgres_storage:
+    driver: local
+
+networks:
+  btc-wallet-network:
+    driver: bridge

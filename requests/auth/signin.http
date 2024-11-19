@@ -1,0 +1,13 @@
+### Signin Request
+
+POST {{baseUrl}}/auth/signin
+Content-Type: application/json
+
+{
+    "email": "john.doeg@example.com",
+    "password": "Password123!"
+}
+
+> {%
+    client.global.set("authToken", response.body.data.accessToken);
+%}

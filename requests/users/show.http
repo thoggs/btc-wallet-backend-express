@@ -1,0 +1,6 @@
+### Show User Reques
+
+@id = 316ca2d5-0764-4175-b9dc-489cc04d2a5d
+
+GET {{baseUrl}}/api/users/{{id}}
+Authorization: Bearer {{authToken}}

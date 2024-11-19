@@ -1,0 +1,14 @@
+### Update User Request
+
+@id = 316ca2d5-0764-4175-b9dc-489cc04d2a5d
+
+PUT {{baseUrl}}/api/users/{{id}}
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "firstName": "Thiago",
+  "lastName": "Rodrigues",
+  "email": "thiago@gmail.com",
+  "password": "NewPassword123!"
+}

@@ -1,0 +1,8 @@
+### Signup Request
+
+POST {{baseUrl}}/auth/signup
+Content-Type: application/json
+
+{
+
+}

@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "codigo1234",
+    "database": "btc_wallet_core",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "admin",
+    "password": "codigo1234",
+    "database": "btc_wallet_core",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "admin",
+    "password": "codigo1234",
+    "database": "btc_wallet_core",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

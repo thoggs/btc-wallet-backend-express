@@ -4,5 +4,8 @@ POST {{baseUrl}}/auth/signup
 Content-Type: application/json
 
 {
-
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doeg5@example.com",
+  "password": "Password123!"
 }

@@ -1,4 +1,4 @@
-export type ResponseDto<T> = {
+export type ResponseDTO<T> = {
   data: T;
   success: boolean;
   metadata: {

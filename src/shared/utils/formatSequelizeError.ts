@@ -1,5 +1,5 @@
-import { ErrorResponseDto } from "../dto/responseDto";
-import { ErrorCode } from "../dto/errorCodes";
+import { ErrorResponseDto } from "../dto/responseDTO";
+import { ErrorCode } from "../enums/errorCodes";
 import { ValidationErrorItem } from 'sequelize';
 
 const formatSequelizeError = (error: any): ErrorResponseDto[] => {

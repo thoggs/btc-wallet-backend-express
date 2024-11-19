@@ -1,5 +1,5 @@
 import {UserRepository} from "../../../domain/repositories/UserRepository";
-import {User} from "../../../domain/entities/User";
+import {UserResponseDTO} from "../../../shared/dto/UserResponseDTO";
 
 export class ValidateUserToken {
     constructor(
@@ -7,7 +7,7 @@ export class ValidateUserToken {
     ) {
     }
 
-    async execute(userId: string): Promise<User | null> {
+    async execute(userId: string): Promise<UserResponseDTO | null> {
         const user = await this.userRepository.findById(userId);
         if (!user) {
             return null;

@@ -1,6 +1,7 @@
 import {UserRepository} from "../../../domain/repositories/UserRepository";
 import {User} from "../../../domain/entities/User";
 import bcrypt from "bcryptjs";
+import {UserResponseDTO} from "../../../shared/dto/UserResponseDTO";
 
 export class CreateUser {
     constructor(
@@ -8,7 +9,14 @@ export class CreateUser {
     ) {
     }
 
-    async execute(data: { firstName: string; lastName: string; email: string; password: string }): Promise<User> {
+    async execute(
+        data: {
+            firstName: string;
+            lastName: string;
+            email: string;
+            password: string
+        }
+    ): Promise<UserResponseDTO> {
 
         const hashedPassword = data.password
             ? await bcrypt.hash(data.password, 10)

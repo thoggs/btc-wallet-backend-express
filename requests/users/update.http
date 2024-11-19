@@ -1,6 +1,6 @@
 ### Update User Request
 
-@id = 316ca2d5-0764-4175-b9dc-489cc04d2a5d
+@id = 424282de-cd73-4fe1-b799-424ed0df04c0
 
 PUT {{baseUrl}}/api/users/{{id}}
 Authorization: Bearer {{authToken}}
